@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react';
-import { Container, CarouselWrapper } from './styles';
-import CardComponent from '../../components/CardComponent/CardComponent';
-import HeaderComponent from '../../components/Header/HeaderComponent';
+import { Container, CarouselWrapper, Logo } from './styles';
+import CardComponent from '../../components/cardComponent';
+import HeaderComponent from '../../components/headerComponent';
 import Carousel from 'react-elastic-carousel';
 import client from '../../config/apollo-client';
 import gql from 'graphql-tag';
 import { IPokemon } from '../../types/pokemon-types';
+import ModalError from '../../components/modalComponent';
+
+import LoaderComponent from 'components/loadingComponent';
 
 const Homepage = () => {
     const [offset, setOffset] = useState(0);
     const [pokemon, setPokemon] = useState<IPokemon[]>([]);
+    const [error, setError] = useState(false);
+    const [load, setLoad] = useState(true);
 
     const breakPoints = [
         { width: 1, itemsToShow: 1 },
@@ -40,11 +45,19 @@ const Homepage = () => {
                 }
             }
         `;
-        const { data } = await client.query({ query, variables: { offset } });
-        const newPokemons = [...pokemon, ...data.pokemon];
-
-        setPokemon(newPokemons);
+        try {
+            const { data, loading } = await client.query({
+                query,
+                variables: { offset }
+            });
+            const newPokemons = [...pokemon, ...data.pokemon];
+            setLoad(loading);
+            setPokemon(newPokemons);
+        } catch (err) {
+            setError(true);
+        }
     }
+
     useEffect(() => {
         setOffset(pokemon.length);
     }, [pokemon]);
@@ -52,11 +65,15 @@ const Homepage = () => {
     return (
         <>
             <HeaderComponent />
+            <Logo>
+                <img src="img/PokeWiki.png" alt="Pokemon Wiki Logo" />
+            </Logo>
             <Container>
+                {error && <ModalError />}
                 <CarouselWrapper>
                     <Carousel
-                        onNextStart={(currentItem, pageIndex) => {
-                            if (currentItem.index === pokemon.length - 10) {
+                        onChange={(currentItem) => {
+                            if (currentItem.index >= pokemon.length - 12) {
                                 fetchPokemon();
                             }
                         }}
@@ -64,6 +81,7 @@ const Homepage = () => {
                         pagination={false}
                         isRTL={false}
                     >
+                        {load && <LoaderComponent />}
                         {pokemon &&
                             pokemon.map((pokemon) => (
                                 <CardComponent key={pokemon.id} {...pokemon} />

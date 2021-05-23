@@ -13,6 +13,7 @@ const cleanTypeName = new ApolloLink((operation, forward) => {
     if (operation.variables) {
         const omitTypename = (key: string, value: any) =>
             key === '__typename' ? undefined : value;
+
         operation.variables = JSON.parse(
             JSON.stringify(operation.variables),
             omitTypename

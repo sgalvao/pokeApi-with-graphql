@@ -1,7 +1,7 @@
 import { Card, PokeImg, PokeName, PokeAbbility } from './styles';
 import { IPokemon } from '../../types/pokemon-types';
 
-export default function CardComponent({ id, name, sprites, types }: IPokemon) {
+export default function CardComponent({ name, sprites, types }: IPokemon) {
     return (
         <Card>
             <PokeName> {name} </PokeName>
