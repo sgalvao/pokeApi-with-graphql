@@ -1,3 +1,4 @@
+<<<<<<< HEAD:client/src/pages/homepage/index.tsx
 import { useEffect, useState } from "react";
 import { Container, CarouselWrapper, Logo } from "./styles";
 import CardComponent from "../../components/CardComponent/index";
@@ -9,6 +10,19 @@ import { IPokemon } from "../../types/pokemon-types";
 import ModalError from "../../components/modalComponent/index";
 
 import LoaderComponent from "components/loadingComponent/index";
+=======
+import { useEffect, useState } from 'react';
+import { Container, CarouselWrapper, Logo } from './styles';
+import CardComponent from '../../components/CardComponent/index';
+import HeaderComponent from '../../components/headerComponent/index';
+import Carousel from 'react-elastic-carousel';
+import client from '../../config/apollo-client';
+import gql from 'graphql-tag';
+import { IPokemon } from '../../types/pokemon-types';
+import ModalError from '../../components/modalComponent/index';
+
+import LoaderComponent from 'components/loadingComponent/index';
+>>>>>>> 4b3601ed0dc03606cfba7e56ce3295d83bd6551c:client/src/pages/homepage/Homepage.tsx
 
 const Homepage = () => {
     const [offset, setOffset] = useState(0);
