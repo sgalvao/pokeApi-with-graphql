@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Container, CarouselWrapper, Logo } from './styles';
-import CardComponent from '../../components/cardComponent/index';
+import CardComponent from '../../components/CardComponent/index';
 import HeaderComponent from '../../components/headerComponent/index';
 import Carousel from 'react-elastic-carousel';
 import client from '../../config/apollo-client';
