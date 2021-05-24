@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Container, CarouselWrapper, Logo } from './styles';
-import CardComponent from '../../components/headerComponent/index';
-import HeaderComponent from '../../components/headerComponent/index';
-import Carousel from 'react-elastic-carousel';
-import client from '../../config/apollo-client';
-import gql from 'graphql-tag';
-import { IPokemon } from '../../types/pokemon-types';
-import ModalError from '../../components/modalComponent/index';
+import { useEffect, useState } from "react";
+import { Container, CarouselWrapper, Logo } from "./styles";
+import CardComponent from "../../components/CardComponent/index";
+import HeaderComponent from "../../components/headerComponent/index";
+import Carousel from "react-elastic-carousel";
+import client from "../../config/apollo-client";
+import gql from "graphql-tag";
+import { IPokemon } from "../../types/pokemon-types";
+import ModalError from "../../components/modalComponent/index";
 
-import LoaderComponent from 'components/loadingComponent/index';
+import LoaderComponent from "components/loadingComponent/index";
 
 const Homepage = () => {
     const [offset, setOffset] = useState(0);
@@ -21,7 +21,7 @@ const Homepage = () => {
         { width: 550, itemsToShow: 2, itemsToScroll: 2 },
         { width: 850, itemsToShow: 3 },
         { width: 1150, itemsToShow: 4 },
-        { width: 1450, itemsToShow: 7 }
+        { width: 1450, itemsToShow: 7 },
     ];
 
     useEffect(() => {
@@ -48,7 +48,7 @@ const Homepage = () => {
         try {
             const { data, loading } = await client.query({
                 query,
-                variables: { offset }
+                variables: { offset },
             });
             const newPokemons = [...pokemon, ...data.pokemon];
             setLoad(loading);

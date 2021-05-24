@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
@@ -33,7 +33,7 @@ export const CarouselWrapper = styled.div`
     flex-direction: row;
     margin: 0 5%;
 
-    .rec-arrow-right {
+    .rec.rec-arrow-right {
         &:focus {
             background: #4051fc;
         }
@@ -41,7 +41,7 @@ export const CarouselWrapper = styled.div`
             background: #4051fc;
         }
     }
-    .rec-arrow-left {
+    .rec.rec-arrow-left {
         &:focus {
             background: #f53939;
         }
