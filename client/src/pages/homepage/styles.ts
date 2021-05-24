@@ -32,4 +32,21 @@ export const CarouselWrapper = styled.div`
     flex: 1;
     flex-direction: row;
     margin: 0 5%;
+
+    .rec-arrow-right {
+        &:focus {
+            background: #4051fc;
+        }
+        &:hover {
+            background: #4051fc;
+        }
+    }
+    .rec-arrow-left {
+        &:focus {
+            background: #f53939;
+        }
+        &:hover {
+            background: #f53939;
+        }
+    }
 `;

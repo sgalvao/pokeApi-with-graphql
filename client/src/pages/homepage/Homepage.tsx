@@ -72,6 +72,7 @@ const Homepage = () => {
                 {error && <ModalError />}
                 <CarouselWrapper>
                     <Carousel
+                        className="carousel"
                         onChange={(currentItem) => {
                             if (currentItem.index >= pokemon.length - 12) {
                                 fetchPokemon();
