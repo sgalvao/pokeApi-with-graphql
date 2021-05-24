@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Container, CarouselWrapper, Logo } from './styles';
-import CardComponent from '../../components/cardComponent';
-import HeaderComponent from '../../components/headerComponent';
+import CardComponent from '../../components/headerComponent/index';
+import HeaderComponent from '../../components/headerComponent/index';
 import Carousel from 'react-elastic-carousel';
 import client from '../../config/apollo-client';
 import gql from 'graphql-tag';
 import { IPokemon } from '../../types/pokemon-types';
-import ModalError from '../../components/modalComponent';
+import ModalError from '../../components/modalComponent/index';
 
-import LoaderComponent from 'components/loadingComponent';
+import LoaderComponent from 'components/loadingComponent/index';
 
 const Homepage = () => {
     const [offset, setOffset] = useState(0);
